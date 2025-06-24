@@ -15,7 +15,7 @@ const Content = ({ screenshots, onClose }: { onClose: () => void; screenshots: {
   const { width } = useViewportSize();
 
   const [isMaximized, setIsMaximized] = useState(false);
-  const [showRightSection, setShowRightSection] = useState(true);
+  const [showRightSection, setShowRightSection] = useState(false);
   const [isCreateLoading, setIsCreateLoading] = useState(false);
 
   const { isLoading, isError, data: user } = useGetUserDetailsQuery();
@@ -113,20 +113,30 @@ const Content = ({ screenshots, onClose }: { onClose: () => void; screenshots: {
       onClose={onClose}
       actions={
         <>
-          <Button size="icon" variant="secondary" onClick={handleToggleMaximize} type="button" className="size-6">
+          <Button
+            size="icon"
+            variant="secondary"
+            onClick={handleToggleMaximize}
+            type="button"
+            className="size-6 dark:bg-slate-900 dark:text-gray-100">
             {isMaximized ? (
-              <Icon name="Minimize2Icon" className="size-3" strokeWidth="1.5" />
+              <Icon name="Minimize2Icon" className="size-3 dark:text-gray-50" strokeWidth="1.5" />
             ) : (
-              <Icon name="Maximize2Icon" className="size-3" strokeWidth="1.5" />
+              <Icon name="Maximize2Icon" className="size-3 dark:text-gray-50" strokeWidth="1.5" />
             )}
           </Button>
 
           {user?.authMethod !== AuthMethod.GUEST && (
-            <Button size="icon" variant="secondary" onClick={handleToggleRightSection} type="button" className="size-6">
+            <Button
+              size="icon"
+              variant="secondary"
+              onClick={handleToggleRightSection}
+              type="button"
+              className="size-6 dark:bg-slate-900 dark:text-gray-100">
               {showRightSidebar ? (
-                <Icon name="PanelRightCloseIcon" className="size-3.5" strokeWidth="1.5" />
+                <Icon name="PanelRightCloseIcon" className="size-3.5 dark:text-gray-50" strokeWidth="1.5" />
               ) : (
-                <Icon name="PanelLeftCloseIcon" className="size-3.5" strokeWidth="1.5" />
+                <Icon name="PanelLeftCloseIcon" className="size-3.5 dark:text-gray-50" strokeWidth="1.5" />
               )}
             </Button>
           )}
@@ -138,7 +148,7 @@ const Content = ({ screenshots, onClose }: { onClose: () => void; screenshots: {
         <div
           className={`flex ${
             showRightSidebar ? 'sm:w-[70%]' : 'w-full'
-          } mt-10 flex-col justify-center bg-gray-50 px-4 pb-4 pt-5 sm:mt-0 sm:p-6`}>
+          } mt-10 flex-col justify-center bg-gray-50 px-4 pb-4 pt-5 sm:mt-0 sm:p-6 dark:bg-slate-900`}>
           {/* Content Section */}
 
           <AnnotationContainer attachments={screenshots} />
@@ -148,22 +158,26 @@ const Content = ({ screenshots, onClose }: { onClose: () => void; screenshots: {
             <p className="max-w-lg select-none text-center text-xs text-gray-400">{t('additionalInformation')}</p>
           </div>
 
-          {!showRightSidebar && (
+          {/* {!showRightSidebar && (
             <Button
-              className="relative mt-2 w-full sm:absolute sm:bottom-6 sm:right-4 sm:mt-0 sm:w-[150px]"
+              className="relative mt-2 w-full sm:absolute sm:bottom-6 sm:right-4 sm:mt-0 sm:w-[150px] dark:bg-secondary/30 dark:hover:bg-secondary/40"
               onClick={handleOnCreate}
               disabled={isCreateLoading}
               loading={isCreateLoading}>
               {t('captureAndShare')}
             </Button>
-          )}
+          )} */}
         </div>
 
         {showRightSidebar && (
-          <div className="flex flex-col justify-between px-4 pb-4 pt-5 sm:w-[30%] sm:p-6">
+          <div className="flex flex-col justify-between px-4 pb-4 pt-5 sm:w-[30%] sm:p-6 dark:bg-slate-900">
             {/* Dropdown and Comment */}
             <div className="space-y-4 sm:mt-8">
-              <Textarea placeholder="Add a description" rows={width < 500 ? 3 : 10} className="w-full" />
+              <Textarea
+                placeholder="Add a description"
+                rows={width < 500 ? 3 : 10}
+                className="w-full dark:bg-slate-900 dark:text-gray-400"
+              />
 
               <small className="select-none text-xs text-gray-400">{t('sliceDescription')}</small>
             </div>
@@ -174,8 +188,13 @@ const Content = ({ screenshots, onClose }: { onClose: () => void; screenshots: {
                 <div className="flex gap-x-2">
                   <Tooltip>
                     <TooltipTrigger asChild>
-                      <Button type="button" size="icon" variant="secondary" onClick={() => {}}>
-                        <Icon name="Paperclip" className="size-4" />
+                      <Button
+                        type="button"
+                        size="icon"
+                        variant="secondary"
+                        onClick={() => {}}
+                        className="dark:bg-secondary/30">
+                        <Icon name="Paperclip" className="size-4 dark:text-gray-50" />
                       </Button>
                     </TooltipTrigger>
                     <TooltipContent side="top" align="start" sideOffset={14}>
@@ -185,8 +204,13 @@ const Content = ({ screenshots, onClose }: { onClose: () => void; screenshots: {
 
                   <Tooltip>
                     <TooltipTrigger asChild>
-                      <Button type="button" size="icon" variant="secondary" onClick={() => {}}>
-                        <Icon name="Folder" className="size-4" />
+                      <Button
+                        type="button"
+                        size="icon"
+                        variant="secondary"
+                        onClick={() => {}}
+                        className="dark:bg-secondary/30">
+                        <Icon name="Folder" className="size-4 dark:text-gray-50" />
                       </Button>
                     </TooltipTrigger>
                     <TooltipContent side="top" align="start" sideOffset={14}>
@@ -196,7 +220,7 @@ const Content = ({ screenshots, onClose }: { onClose: () => void; screenshots: {
                 </div>
 
                 <Button
-                  className="w-full"
+                  className="dark:bg-secondary/30 dark:hover:bg-secondary/40 w-full"
                   onClick={handleOnCreate}
                   disabled={isCreateLoading}
                   loading={isCreateLoading}>

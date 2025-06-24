@@ -220,12 +220,12 @@ export const CaptureScreenshotGroup = () => {
   return (
     <>
       <RadioGroup
-        className={cn('border-muted grid w-full gap-4 rounded-xl border bg-slate-100/20 p-2', {
+        className={cn('border-muted grid w-full gap-4 rounded-xl border bg-slate-100/20 p-2 dark:border-gray-900', {
           'grid-cols-3': !isCaptureActive,
         })}>
         {isCaptureActive ? (
           <button
-            className="hover:bg-accent flex w-full items-center justify-center rounded-md border border-transparent py-4"
+            className="hover:bg-accent flex w-full items-center justify-center rounded-md border border-transparent py-4 dark:text-gray-400 dark:hover:bg-gray-500 dark:hover:text-gray-800"
             onClick={() => handleCaptureScreenshot()}>
             <Icon name="X" size={20} strokeWidth={1.5} className="mr-1" />
             <span>{t('exitCaptureScreenshot')}</span>
@@ -244,7 +244,7 @@ export const CaptureScreenshotGroup = () => {
                 <Label
                   htmlFor={type.slug}
                   className={cn(
-                    'hover:bg-accent hover:text-accent-foreground flex flex-col items-center justify-between rounded-md border border-transparent py-3 hover:cursor-pointer hover:border-slate-200',
+                    'hover:bg-accent hover:text-accent-foreground flex flex-col items-center justify-between rounded-md border border-transparent py-3 hover:cursor-pointer dark:text-gray-100 dark:hover:bg-gray-500 dark:hover:text-gray-300',
                   )}>
                   <Icon name={type.icon} className="mb-3 size-5" strokeWidth={type.slug === 'area' ? 2 : 1.5} />
 

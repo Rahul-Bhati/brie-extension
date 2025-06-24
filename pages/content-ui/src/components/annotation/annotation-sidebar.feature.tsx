@@ -17,7 +17,7 @@ const AnnotationSidebar = ({ activeElement, onActiveElement }: any) => {
   };
 
   return (
-    <div className="dark:bg-secondary inset-x-0 mx-auto mt-8 flex w-fit rounded-xl bg-black shadow-md">
+    <div className="inset-x-0 mx-auto mt-8 flex w-fit rounded-xl bg-black shadow-md dark:bg-gray-700">
       <div className="sm:p2 flex-column flex items-center space-x-1 p-1 sm:space-x-1.5">
         {navElements.map((item: any, idx: number) =>
           item?.value ? (
@@ -27,7 +27,7 @@ const AnnotationSidebar = ({ activeElement, onActiveElement }: any) => {
                   type="button"
                   size="icon"
                   disabled={isActive(item.value)}
-                  className={`hover:bg-secondary/15 bg-transparent text-white dark:hover:bg-black ${
+                  className={`hover:bg-secondary/15 dark:hover:bg-secondary/30 bg-transparent text-white ${
                     isActive(item.value) ? 'bg-secondary/30 dark:hover:bg-black' : ''
                   }`}
                   variant="secondary"

@@ -43,7 +43,7 @@ export default function App() {
         <div className="light relative">
           {screenshots?.length && (
             <main className="flex-1 md:container md:max-w-screen-xl">
-              <div className="flex items-center justify-between gap-2 rounded bg-white">
+              <div className="flex items-center justify-between gap-2 rounded bg-white dark:bg-black">
                 <Content onClose={handleOnCloseModal} screenshots={screenshots} />
               </div>
             </main>
